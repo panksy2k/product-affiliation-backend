@@ -1,0 +1,98 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    // Specify our dependency on the marvelous plugin from Daryl Teo
+    classpath 'com.darylteo.vertx:vertx-gradle-plugin:0.1.3'
+  }
+}
+
+def vertxVersion = "4.5.1"
+def junitJupiterVersion = "5.9.1"
+
+group = "com.product.affiliation.backend"
+version = "1.0.0-SNAPSHOT"
+
+apply plugin: 'application'
+apply plugin: 'java'
+
+application {
+  mainClassName = 'com.product.affiliation.backend.verticles.ProductVerticle'
+
+  /*run {
+    args "redeploy", "$watchForChange", "launcher-class", "$launcherClassName", "on-redeploy", "$doOnChange"
+  }*/
+}
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+sourceSets {
+  main {
+    java {
+      srcDir 'src/main/java'
+    }
+    resources {
+      srcDir 'resources'
+    }
+  }
+
+  test {
+    java {
+      srcDir 'src/test/java'
+    }
+
+    resources {
+      srcDir 'src/test/resources'
+    }
+  }
+}
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_17
+  targetCompatibility = JavaVersion.VERSION_17
+}
+
+jar {
+  manifest {
+    attributes 'Main-Class': 'com.product.affiliation.backend.verticles.ProductVerticle'
+  }
+}
+
+test {
+  useJUnitPlatform()
+  testLogging {
+    events("PASSED", "SKIPPED", "FAILED")
+  }
+}
+dependencies {
+  implementation(platform("io.vertx:vertx-stack-depchain:$vertxVersion"))
+  implementation("io.vertx:vertx-web-client")
+  implementation("io.vertx:vertx-config")
+  implementation("io.vertx:vertx-web")
+  implementation("commons-net:commons-net:3.8.0")
+  implementation("io.vertx:vertx-pg-client")
+  implementation("com.google.inject:guice:5.0.1")
+  implementation("am.ik.yavi:yavi:0.9.1")
+  implementation("io.vertx:vertx-web-validation")
+  implementation("io.vertx:vertx-web-templ-thymeleaf")
+  implementation("io.vertx:vertx-shell")
+  implementation("org.testcontainers:postgresql:1.16.2")
+  implementation("org.testcontainers:testcontainers:1.16.2")
+  implementation("com.konghq:unirest-java:3.14.2")
+  implementation("io.vertx:vertx-rx-java3-gen:4.4.4")
+  implementation("io.vertx:vertx-kafka-client")
+  implementation("com.ongres.scram:client:2.1")
+  implementation("org.apache.commons:commons-lang3:3.13.0")
+
+  testImplementation("io.vertx:vertx-junit5")
+  testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
+  testImplementation("org.testcontainers:junit-jupiter:1.16.2")
+  testImplementation('org.mockito:mockito-junit-jupiter:4.0.0')
+}
+
+
