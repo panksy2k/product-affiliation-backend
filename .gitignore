@@ -83,6 +83,7 @@ cmake-buildTool-debug/
 
 ## File-based project format:
 *.iws
+*.class
 
 ## Plugin-specific files:
 

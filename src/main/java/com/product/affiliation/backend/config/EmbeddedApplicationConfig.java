@@ -9,7 +9,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 public class EmbeddedApplicationConfig implements ApplicationConfig {
   private static final String DB_USER = "pankaj";
   private static final String DB_PASSWD = "secret";
-  private static final String DB_TABLE = "products";
+  private static final String DB_NAME = "products";
   private final Vertx vtx;
 
   public EmbeddedApplicationConfig(Vertx vertx) {
@@ -34,13 +34,13 @@ public class EmbeddedApplicationConfig implements ApplicationConfig {
   private JsonObject runPostgreSQLContainer() throws Exception {
     try {
       PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:11-alpine")
-        .withDatabaseName(DB_TABLE).withUsername(DB_USER).withPassword(DB_PASSWD);
+        .withDatabaseName(DB_NAME).withUsername(DB_USER).withPassword(DB_PASSWD);
 
       container.start();
 
       JsonObject config = new JsonObject();
       config.put("db_url",
-        String.format("postgresql://pankaj:secret@localhost:%d/%s", container.getFirstMappedPort(), DB_TABLE));
+        String.format("postgresql://pankaj:secret@localhost:%d/%s", container.getFirstMappedPort(), DB_NAME));
 
       return config;
     } catch (Exception e) {

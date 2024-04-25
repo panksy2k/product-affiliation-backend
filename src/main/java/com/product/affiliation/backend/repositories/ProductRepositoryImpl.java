@@ -1,18 +1,19 @@
 package com.product.affiliation.backend.repositories;
 
-import com.product.affiliation.backend.models.Product;
+import com.product.affiliation.backend.messaging.event.GetProductPayload;
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 import io.vertx.sqlclient.Row;
+import io.vertx.sqlclient.RowSet;
 import io.vertx.sqlclient.SqlClient;
 import io.vertx.sqlclient.Tuple;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.StreamSupport;
 
 public class ProductRepositoryImpl implements ProductRepository {
-
     private final Vertx vtx;
     private final SqlClient pgClient;
 
@@ -22,7 +23,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public Future<List<Product>> findProducts(List<String> queryWhereClauseCriteria) {
+    public Future<List<GetProductPayload>> findProducts(List<String> queryWhereClauseCriteria) {
         StringBuilder sqlBuilder = new StringBuilder("select * from product where ");
         for(int i = 0; i < queryWhereClauseCriteria.size(); i++) {
           String expr = queryWhereClauseCriteria.get(i);
@@ -51,7 +52,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
   @Override
-  public Future<Product> saveProduct(Product newProduct) {
+  public Future<GetProductPayload> saveProduct(GetProductPayload newProduct) {
      String sqlBuilder = new StringBuilder().append("insert into product (price, ")
         .append("name, ")
         .append("affiliateURL, ")
@@ -78,7 +79,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     Tuple tupleValue = Tuple.of(
             newProduct.getPrice(),
             newProduct.getName(),
-            newProduct.getAffiliateURL(),
+            newProduct.getAffiliateURL().toString(),
             newProduct.getProductCondition(),
             newProduct.getScreenSize(),
             newProduct.getMaxDisplayResolution(),
@@ -96,14 +97,14 @@ public class ProductRepositoryImpl implements ProductRepository {
             newProduct.isAmazonChoice(),
             newProduct.getPurveyor());
 
-    Future<Product> productFuture = pgClient.preparedQuery(sqlBuilder).execute(tupleValue).flatMap(rs -> {
+    Future<GetProductPayload> productFuture = pgClient.preparedQuery(sqlBuilder).execute(tupleValue).flatMap(rs -> {
       if (rs.rowCount() == 0) {
         return Future.failedFuture("Could not create a Product ");
       }
 
       Row createdProduct = rs.iterator().next();
       Long productID = createdProduct.getLong("id");
-      return Future.succeededFuture(Product.withId(productID, newProduct));
+      return Future.succeededFuture(GetProductPayload.withId(productID, newProduct));
     });
 
     return productFuture;
@@ -113,5 +114,19 @@ public class ProductRepositoryImpl implements ProductRepository {
   public Future<Boolean> removeProduct(Long productId) {
       String sql = "DELETE from product where id = $1 RETURNING id;";
       return pgClient.preparedQuery(sql).execute(Tuple.of(productId)).map(rs -> rs.rowCount() != 0);
+  }
+
+  @Override
+  public Future<Optional<GetProductPayload>> findProduct(Long productId) {
+      String sql = "select * from product where id = $1";
+      Tuple tupleId = Tuple.of(productId);
+
+      return pgClient.preparedQuery(sql).mapping(new ProductRowMapper()).execute(tupleId).map((RowSet<GetProductPayload> rsProduct) -> {
+          if(rsProduct.rowCount() == 0) {
+            return Optional.empty();
+          }
+
+          return Optional.of(rsProduct.iterator().next());
+      });
   }
 }

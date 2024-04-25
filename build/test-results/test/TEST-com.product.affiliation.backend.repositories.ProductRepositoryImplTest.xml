@@ -1,95 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-03-25T19:04:27" hostname="mac-studio.lan" time="16.338">
+<testsuite name="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2024-04-24T21:21:43" hostname="mac-studio.lan" time="20.67">
   <properties/>
-  <testcase name="saveProduct(VertxTestContext)" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="16.338">
-    <failure message="java.lang.AssertionError: io.vertx.core.impl.NoStackTraceThrowable: Parameter at position[2] with class = [java.net.URL] and value = [https://www.amazon.co.uk/dp/B095749V5V/ref=sspa_dk_detail_5?pd_rd_i=B095749V5V&amp;pd_rd_w=912fo&amp;content-id=amzn1.sym.84ea1bf1-65a8-4363-b8f5-f0df58cbb686&amp;pf_rd_p=84ea1bf1-65a8-4363-b8f5-f0df58cbb686&amp;pf_rd_r=MBM0N7W2E8CDFQXHB343&amp;pd_rd_wg=aV22e&amp;pd_rd_r=1c384c09-a39a-4922-b127-6793c694e633&amp;s=computers&amp;sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWw&amp;th=1] can not be coerced to the expected class = [java.lang.String] for encoding." type="java.lang.AssertionError">java.lang.AssertionError: io.vertx.core.impl.NoStackTraceThrowable: Parameter at position[2] with class = [java.net.URL] and value = [https://www.amazon.co.uk/dp/B095749V5V/ref=sspa_dk_detail_5?pd_rd_i=B095749V5V&amp;pd_rd_w=912fo&amp;content-id=amzn1.sym.84ea1bf1-65a8-4363-b8f5-f0df58cbb686&amp;pf_rd_p=84ea1bf1-65a8-4363-b8f5-f0df58cbb686&amp;pf_rd_r=MBM0N7W2E8CDFQXHB343&amp;pd_rd_wg=aV22e&amp;pd_rd_r=1c384c09-a39a-4922-b127-6793c694e633&amp;s=computers&amp;sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWw&amp;th=1] can not be coerced to the expected class = [java.lang.String] for encoding.
-	at io.vertx.junit5.VertxExtension.joinActiveTestContexts(VertxExtension.java:205)
-	at io.vertx.junit5.VertxExtension.interceptTestMethod(VertxExtension.java:143)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:217)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
-	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:119)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:94)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:89)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at jdk.proxy1/jdk.proxy1.$Proxy2.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
-	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
-Caused by: io.vertx.core.impl.NoStackTraceThrowable: Parameter at position[2] with class = [java.net.URL] and value = [https://www.amazon.co.uk/dp/B095749V5V/ref=sspa_dk_detail_5?pd_rd_i=B095749V5V&amp;pd_rd_w=912fo&amp;content-id=amzn1.sym.84ea1bf1-65a8-4363-b8f5-f0df58cbb686&amp;pf_rd_p=84ea1bf1-65a8-4363-b8f5-f0df58cbb686&amp;pf_rd_r=MBM0N7W2E8CDFQXHB343&amp;pd_rd_wg=aV22e&amp;pd_rd_r=1c384c09-a39a-4922-b127-6793c694e633&amp;s=computers&amp;sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWw&amp;th=1] can not be coerced to the expected class = [java.lang.String] for encoding.
-</failure>
-  </testcase>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Mar 25, 2024 7:04:29 PM io.netty.resolver.dns.DnsServerAddressStreamProviders <clinit>
-WARNING: Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
-]]></system-err>
+  <testcase name="testRemoveProduct(VertxTestContext)" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="6.338"/>
+  <testcase name="testContainerIsOk()" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="1.19"/>
+  <testcase name="testFindProductById(VertxTestContext)" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="1.185"/>
+  <testcase name="testSaveProduct(VertxTestContext)" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="1.184"/>
+  <testcase name="[1] brand = 'Dell'" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="1.195"/>
+  <testcase name="[2] productCondition = 'NEW'" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="1.191"/>
+  <testcase name="[3] screenSize = '27 Inch'" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="1.186"/>
+  <testcase name="[4] maxDisplayResolution = '1920 x 1080'" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="1.212"/>
+  <testcase name="[5] color = 'Black'" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="1.213"/>
+  <testcase name="[6] displayType = 'HD'" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="1.215"/>
+  <testcase name="[7] warranty = '3 Years'" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="1.186"/>
+  <testcase name="[8] amazonChoice = true" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="1.181"/>
+  <testcase name="[9] purveyor = 'Amazon'" classname="com.product.affiliation.backend.repositories.ProductRepositoryImplTest" time="1.169"/>
+  <system-out><![CDATA[22:21:43/1     INFO  [Test worker]: Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+22:21:43/144   INFO  [Test worker]: Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+22:21:43/145   INFO  [Test worker]: Docker host IP address is localhost
+22:21:43/153   INFO  [Test worker]: Connected to docker: 
+  Server Version: master
+  API Version: 1.44
+  Operating System: Docker Desktop
+  Total Memory: 7950 MB
+22:21:43/154   INFO  [Test worker]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+22:21:48/4750  INFO  [Test worker]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+22:21:48/4750  INFO  [Test worker]: Checking the system...
+22:21:48/4751  INFO  [Test worker]: ✔︎ Docker server version should be at least 1.6.0
+22:21:48/4791  INFO  [Test worker]: ✔︎ Docker environment should have more than 2GB free disk space
+22:21:48/4839  TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:21:48/4839  DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:48/4839  DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:21:48/4839  DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:48/4839  INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:21:48/4865  INFO  [Test worker]: Starting container with ID: 7333fae9e8aa6be368494c907240aea1160a0cd8281c5c626c628ee97d2bef90
+22:21:48/4975  INFO  [Test worker]: Container postgres:11-alpine is starting: 7333fae9e8aa6be368494c907240aea1160a0cd8281c5c626c628ee97d2bef90
+22:21:49/5976  INFO  [Test worker]: Container postgres:11-alpine started in PT1.184213S
+22:21:49/6049  WARN  [Test worker]: Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+22:21:50/6328  TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:21:50/6328  DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:50/6328  DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:21:50/6329  DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:50/6329  INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:21:50/6351  INFO  [Test worker]: Starting container with ID: 5dd92194e6f414e530dc9dd372d0fd97568204ea29d4e876c51d2ae7617a0e5d
+22:21:50/6454  INFO  [Test worker]: Container postgres:11-alpine is starting: 5dd92194e6f414e530dc9dd372d0fd97568204ea29d4e876c51d2ae7617a0e5d
+22:21:51/7347  INFO  [Test worker]: Container postgres:11-alpine started in PT1.018867S
+22:21:51/7520  TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:21:51/7520  DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:51/7520  DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:21:51/7520  DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:51/7520  INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:21:51/7542  INFO  [Test worker]: Starting container with ID: c58cbbfc63e8192753e94a93078b1ba68a9e3904242551e6dfb14bf8ce7215ee
+22:21:51/7637  INFO  [Test worker]: Container postgres:11-alpine is starting: c58cbbfc63e8192753e94a93078b1ba68a9e3904242551e6dfb14bf8ce7215ee
+22:21:52/8527  INFO  [Test worker]: Container postgres:11-alpine started in PT1.007093S
+Product{id=1, name='Dell SE2222H 21.5 Inch Full HD (1920x1080) Monitor', affiliateURL=https://www.amazon.co.uk/dp/B095749V5V/ref=sspa_dk_detail_5?pd_rd_i=B095749V5V&pd_rd_w=912fo&content-id=amzn1.sym.84ea1bf1-65a8-4363-b8f5-f0df58cbb686&pf_rd_p=84ea1bf1-65a8-4363-b8f5-f0df58cbb686&pf_rd_r=MBM0N7W2E8CDFQXHB343&pd_rd_wg=aV22e&pd_rd_r=1c384c09-a39a-4922-b127-6793c694e633&s=computers&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWw&th=1, productCondition='NEW', price=69.98999786376953, warrantyValue='3 Years', screenSize='27 Inch', refreshRate='60Hz', maxDisplayResolution='1920 x 1080', displayType='HD', dimension='4.9D x 50.4W x 29.5H centimetres', specialFeatures=[Anti Glare Screen, Flicker Free], brand='Dell', color='Black', amazonChoice=true, connectivityTech=[HDMI], purveyor='Amazon', brandSeries='SE2222H', hdmiPortsQty=2, aspectRatio='16:9'}
+22:21:52/8705  TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:21:52/8705  DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:52/8705  DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:21:52/8706  DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:52/8706  INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:21:52/8726  INFO  [Test worker]: Starting container with ID: 19ce5ffeb6ddd54dabf1d77733dad962b06bf4fa4daa05819e9ef361bfde1ec3
+22:21:52/8840  INFO  [Test worker]: Container postgres:11-alpine is starting: 19ce5ffeb6ddd54dabf1d77733dad962b06bf4fa4daa05819e9ef361bfde1ec3
+22:21:53/9730  INFO  [Test worker]: Container postgres:11-alpine started in PT1.024733S
+22:21:53/9900  TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:21:53/9900  DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:53/9900  DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:21:53/9900  DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:53/9900  INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:21:53/9924  INFO  [Test worker]: Starting container with ID: 2688b8f372461e84181ca673e8ff0d634ca224a630256f60bfc2bcac4f0bcf71
+22:21:53/10023 INFO  [Test worker]: Container postgres:11-alpine is starting: 2688b8f372461e84181ca673e8ff0d634ca224a630256f60bfc2bcac4f0bcf71
+22:21:54/10938 INFO  [Test worker]: Container postgres:11-alpine started in PT1.037931S
+22:21:54/11098 TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:21:54/11098 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:54/11098 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:21:54/11098 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:54/11098 INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:21:54/11122 INFO  [Test worker]: Starting container with ID: ba4fe5896a6219fac44ca12f79d8865029fb103c0189afb1fa51d435ffd27454
+22:21:54/11234 INFO  [Test worker]: Container postgres:11-alpine is starting: ba4fe5896a6219fac44ca12f79d8865029fb103c0189afb1fa51d435ffd27454
+22:21:55/12117 INFO  [Test worker]: Container postgres:11-alpine started in PT1.019143S
+22:21:56/12290 TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:21:56/12290 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:56/12290 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:21:56/12290 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:56/12290 INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:21:56/12311 INFO  [Test worker]: Starting container with ID: 1a5d3923c344faf6c10053c0f0620a7b6f81149c34dbfdbdf9b4498c7c08fcbc
+22:21:56/12407 INFO  [Test worker]: Container postgres:11-alpine is starting: 1a5d3923c344faf6c10053c0f0620a7b6f81149c34dbfdbdf9b4498c7c08fcbc
+22:21:57/13309 INFO  [Test worker]: Container postgres:11-alpine started in PT1.01992S
+22:21:57/13477 TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:21:57/13477 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:57/13477 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:21:57/13477 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:57/13477 INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:21:57/13501 INFO  [Test worker]: Starting container with ID: 9ed399d830c834e7f75811841dfc4e2bd5b04464c0e43200906a0fefbee55431
+22:21:57/13607 INFO  [Test worker]: Container postgres:11-alpine is starting: 9ed399d830c834e7f75811841dfc4e2bd5b04464c0e43200906a0fefbee55431
+22:21:58/14522 INFO  [Test worker]: Container postgres:11-alpine started in PT1.044601S
+22:21:58/14692 TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:21:58/14692 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:58/14692 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:21:58/14692 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:58/14692 INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:21:58/14714 INFO  [Test worker]: Starting container with ID: 4f7606bd84a11ee6f576b9ec56e33396b2bdca93bb9a3a5780ba4fe52a6482df
+22:21:58/14810 INFO  [Test worker]: Container postgres:11-alpine is starting: 4f7606bd84a11ee6f576b9ec56e33396b2bdca93bb9a3a5780ba4fe52a6482df
+22:21:59/15725 INFO  [Test worker]: Container postgres:11-alpine started in PT1.032858S
+22:21:59/15905 TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:21:59/15905 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:59/15905 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:21:59/15905 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:21:59/15905 INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:21:59/15929 INFO  [Test worker]: Starting container with ID: 8b38f7188f553b44bcb108e45266efced1242bd926e8bc55ae16c916d1f0afbd
+22:21:59/16028 INFO  [Test worker]: Container postgres:11-alpine is starting: 8b38f7188f553b44bcb108e45266efced1242bd926e8bc55ae16c916d1f0afbd
+22:22:00/16958 INFO  [Test worker]: Container postgres:11-alpine started in PT1.052592S
+22:22:00/17121 TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:22:00/17121 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:22:00/17121 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:22:00/17121 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:22:00/17121 INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:22:00/17144 INFO  [Test worker]: Starting container with ID: 4512d349231a3c53cc7147d28e127e9e56673403f12e8cc804f69acbf82dbbb0
+22:22:00/17243 INFO  [Test worker]: Container postgres:11-alpine is starting: 4512d349231a3c53cc7147d28e127e9e56673403f12e8cc804f69acbf82dbbb0
+22:22:01/18151 INFO  [Test worker]: Container postgres:11-alpine started in PT1.0305S
+22:22:02/18309 TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:22:02/18309 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:22:02/18309 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:22:02/18309 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:22:02/18310 INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:22:02/18332 INFO  [Test worker]: Starting container with ID: ffbd8a49d41ec02bcef498cd1c3e5e6f12250c71a435c45ae8fc00e44d26720e
+22:22:02/18431 INFO  [Test worker]: Container postgres:11-alpine is starting: ffbd8a49d41ec02bcef498cd1c3e5e6f12250c71a435c45ae8fc00e44d26720e
+22:22:03/19340 INFO  [Test worker]: Container postgres:11-alpine started in PT1.030915S
+22:22:03/19492 TRACE [Test worker]: postgres:11-alpine is already in image name cache
+22:22:03/19492 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:22:03/19492 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
+22:22:03/19492 DEBUG [Test worker]: Starting container: postgres:11-alpine
+22:22:03/19492 INFO  [Test worker]: Creating container for image: postgres:11-alpine
+22:22:03/19512 INFO  [Test worker]: Starting container with ID: 3902a0bca9c40be2c740a240fc6be1b8f42048c63c5df0e3183c225c4a8ca1b5
+22:22:03/19606 INFO  [Test worker]: Container postgres:11-alpine is starting: 3902a0bca9c40be2c740a240fc6be1b8f42048c63c5df0e3183c225c4a8ca1b5
+22:22:04/20490 INFO  [Test worker]: Container postgres:11-alpine started in PT0.998086S
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>

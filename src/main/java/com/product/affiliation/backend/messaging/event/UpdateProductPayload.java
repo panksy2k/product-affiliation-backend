@@ -1,35 +1,66 @@
-package com.product.affiliation.backend.models;
+package com.product.affiliation.backend.messaging.event;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.URL;
+import java.util.Arrays;
 
-public class Product {
-  private long id;
+public class UpdateProductPayload extends ProductPayload {
+  static final String TYPE = "UPDATE_PRODUCT";
+
+  @JsonProperty
   private String name;
+  @JsonProperty
   private URL affiliateURL;
+  @JsonProperty
   private String productCondition;
+  @JsonProperty
   private Double price;
+  @JsonProperty
   private String warrantyValue;
+  @JsonProperty
   private String screenSize;
+  @JsonProperty
   private String refreshRate;
+  @JsonProperty
   private String maxDisplayResolution;
+  @JsonProperty
   private String displayType;
+  @JsonProperty
   private String dimension;
+  @JsonProperty
   private String[] specialFeatures;
+  @JsonProperty
   private String brand;
+  @JsonProperty
   private String color;
+  @JsonProperty
   private boolean amazonChoice;
+  @JsonProperty
   private String[] connectivityTech;
+  @JsonProperty
   private String purveyor;
+  @JsonProperty
   private String brandSeries;
+  @JsonProperty
   private short hdmiPortsQty;
+  @JsonProperty
   private String aspectRatio;
 
-  public Product(long id, String name, URL affiliateURL, String productCondition, Double price, String warrantyValue,
-                 String screenSize, String refreshRate, String maxDisplayResolution, String displayType,
-                 String dimension,
-                 String[] specialFeatures, String brand, String color, boolean amazonChoice, String[] connectivityTech,
-                 String purveyor, String brandSeries, short hdmiPortsQty, String aspectRatio) {
-    this.id = id;
+  public UpdateProductPayload(@JsonProperty Long id) {
+    super(id);
+  }
+
+  @Override
+  public String getType() {
+    return TYPE;
+  }
+
+  public UpdateProductPayload(@JsonProperty Long id, String name, URL affiliateURL, String productCondition, Double price, String warrantyValue,
+                              String screenSize, String refreshRate, String maxDisplayResolution, String displayType,
+                              String dimension,
+                              String[] specialFeatures, String brand, String color, boolean amazonChoice, String[] connectivityTech,
+                              String purveyor, String brandSeries, short hdmiPortsQty, String aspectRatio) {
+    super(id);
     this.name = name;
     this.affiliateURL = affiliateURL;
     this.productCondition = productCondition;
@@ -49,18 +80,6 @@ public class Product {
     this.brandSeries = brandSeries;
     this.hdmiPortsQty = hdmiPortsQty;
     this.aspectRatio = aspectRatio;
-  }
-
-  public Product() {
-    super();
-  }
-
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
   }
 
   public String getName() {
@@ -216,8 +235,9 @@ public class Product {
   }
 
 
-  public static Product withId(long id, Product oldProduct) {
-      Product p = new Product(id, oldProduct.getName(), oldProduct.getAffiliateURL(), oldProduct.getProductCondition(),
+  public static UpdateProductPayload withId(long id, UpdateProductPayload oldProduct) {
+      UpdateProductPayload
+              p = new UpdateProductPayload(id, oldProduct.getName(), oldProduct.getAffiliateURL(), oldProduct.getProductCondition(),
         oldProduct.getPrice(), oldProduct.getWarrantyValue(), oldProduct.getScreenSize(),
         oldProduct.getRefreshRate(), oldProduct.getMaxDisplayResolution(),
         oldProduct.getDisplayType(), oldProduct.getDimension(), oldProduct.getSpecialFeatures(), oldProduct.getBrand(),
@@ -225,5 +245,31 @@ public class Product {
         oldProduct.getBrandSeries(), oldProduct.getHdmiPortsQty(), oldProduct.getAspectRatio());
 
       return p;
+  }
+
+  @Override
+  public String toString() {
+    return "Product{" +
+      "id=" + getId() +
+      ", name='" + name + '\'' +
+      ", affiliateURL=" + affiliateURL +
+      ", productCondition='" + productCondition + '\'' +
+      ", price=" + price +
+      ", warrantyValue='" + warrantyValue + '\'' +
+      ", screenSize='" + screenSize + '\'' +
+      ", refreshRate='" + refreshRate + '\'' +
+      ", maxDisplayResolution='" + maxDisplayResolution + '\'' +
+      ", displayType='" + displayType + '\'' +
+      ", dimension='" + dimension + '\'' +
+      ", specialFeatures=" + Arrays.toString(specialFeatures) +
+      ", brand='" + brand + '\'' +
+      ", color='" + color + '\'' +
+      ", amazonChoice=" + amazonChoice +
+      ", connectivityTech=" + Arrays.toString(connectivityTech) +
+      ", purveyor='" + purveyor + '\'' +
+      ", brandSeries='" + brandSeries + '\'' +
+      ", hdmiPortsQty=" + hdmiPortsQty +
+      ", aspectRatio='" + aspectRatio + '\'' +
+      '}';
   }
 }
