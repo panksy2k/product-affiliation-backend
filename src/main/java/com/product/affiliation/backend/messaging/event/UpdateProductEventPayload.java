@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.URL;
 import java.util.Arrays;
 
-public class UpdateProductPayload extends ProductPayload {
+public class UpdateProductEventPayload extends ProductEventPayload {
   static final String TYPE = "UPDATE_PRODUCT";
 
   @JsonProperty
@@ -46,7 +46,7 @@ public class UpdateProductPayload extends ProductPayload {
   @JsonProperty
   private String aspectRatio;
 
-  public UpdateProductPayload(@JsonProperty Long id) {
+  public UpdateProductEventPayload(@JsonProperty Long id) {
     super(id);
   }
 
@@ -55,11 +55,11 @@ public class UpdateProductPayload extends ProductPayload {
     return TYPE;
   }
 
-  public UpdateProductPayload(@JsonProperty Long id, String name, URL affiliateURL, String productCondition, Double price, String warrantyValue,
-                              String screenSize, String refreshRate, String maxDisplayResolution, String displayType,
-                              String dimension,
-                              String[] specialFeatures, String brand, String color, boolean amazonChoice, String[] connectivityTech,
-                              String purveyor, String brandSeries, short hdmiPortsQty, String aspectRatio) {
+  public UpdateProductEventPayload(@JsonProperty Long id, String name, URL affiliateURL, String productCondition, Double price, String warrantyValue,
+                                   String screenSize, String refreshRate, String maxDisplayResolution, String displayType,
+                                   String dimension,
+                                   String[] specialFeatures, String brand, String color, boolean amazonChoice, String[] connectivityTech,
+                                   String purveyor, String brandSeries, short hdmiPortsQty, String aspectRatio) {
     super(id);
     this.name = name;
     this.affiliateURL = affiliateURL;
@@ -235,9 +235,9 @@ public class UpdateProductPayload extends ProductPayload {
   }
 
 
-  public static UpdateProductPayload withId(long id, UpdateProductPayload oldProduct) {
-      UpdateProductPayload
-              p = new UpdateProductPayload(id, oldProduct.getName(), oldProduct.getAffiliateURL(), oldProduct.getProductCondition(),
+  public static UpdateProductEventPayload withId(long id, UpdateProductEventPayload oldProduct) {
+      UpdateProductEventPayload
+              p = new UpdateProductEventPayload(id, oldProduct.getName(), oldProduct.getAffiliateURL(), oldProduct.getProductCondition(),
         oldProduct.getPrice(), oldProduct.getWarrantyValue(), oldProduct.getScreenSize(),
         oldProduct.getRefreshRate(), oldProduct.getMaxDisplayResolution(),
         oldProduct.getDisplayType(), oldProduct.getDimension(), oldProduct.getSpecialFeatures(), oldProduct.getBrand(),

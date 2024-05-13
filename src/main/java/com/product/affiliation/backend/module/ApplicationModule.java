@@ -2,7 +2,6 @@ package com.product.affiliation.backend.module;
 
 import com.google.inject.AbstractModule;
 import com.product.affiliation.backend.errors.DependencyCreationException;
-import com.product.affiliation.backend.messaging.ProductMessageKafkaConsumerVerticle;
 import com.product.affiliation.backend.messaging.receiver.EventReceiver;
 import com.product.affiliation.backend.messaging.receiver.ProductPipelinedReceiver;
 import com.product.affiliation.backend.models.ApplicationConfiguration;
@@ -32,10 +31,8 @@ public class ApplicationModule extends AbstractModule {
         productRepository.createProductTable()
                 .onSuccess(h -> LOG.info("==== Create Product Table - successful! ===="))
                 .onFailure(h -> {
-                  h.printStackTrace();
-                  LOG.error("=== Error whilst creating Product Table -- {}", h);
+                  LOG.error("=== Error whilst creating Product Table -- {}", h.getMessage());
                 });
-
         productFetchEventPipelineReceiver = new ProductPipelinedReceiver(vertx, kafkaConsumerProperties(),
           "product", Duration.ofMillis(100), 10);
 
@@ -53,7 +50,6 @@ public class ApplicationModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(ProductVerticle.class).toInstance(new ProductVerticle());
-        bind(ProductMessageKafkaConsumerVerticle.class).toInstance(new ProductMessageKafkaConsumerVerticle(productService));
+        bind(ProductVerticle.class).toInstance(new ProductVerticle(productService));
     }
 }

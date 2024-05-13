@@ -24,4 +24,15 @@ public class QueryHelper {
 
     return "";
   }
+
+  public static String insertArraySql(char arrayStart, char arrayEnd, String... values) {
+    StringBuffer sb = new StringBuffer();
+    sb.append("'").append(arrayStart);
+
+    for(String v : values) {
+      sb.append("\"").append(v).append("\"").append(",");
+    }
+
+    return sb.deleteCharAt(sb.length() - 1).append(arrayEnd).append("'").toString();
+  }
 }

@@ -4,5 +4,5 @@ import com.product.affiliation.backend.models.ApplicationConfiguration;
 import io.vertx.core.Future;
 
 public interface ApplicationConfig {
-    Future<ApplicationConfiguration> receiveApplicationConfig();
+  Future<ApplicationConfiguration> receiveApplicationConfig();
 }

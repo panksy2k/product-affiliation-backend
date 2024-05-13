@@ -1,5 +1,6 @@
 package com.product.affiliation.backend.util;
 
+import java.util.Collection;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -21,5 +22,9 @@ public class Util {
         for (int i = 8; i < 16; i++)
             lsb = (lsb << 8) | (data[i] & 0xff);
         return new UUID(msb, lsb);
+    }
+
+    public static <T> boolean isEmpty(Collection<T> tCollection) {
+      return (tCollection == null || tCollection.isEmpty())? true : false;
     }
 }

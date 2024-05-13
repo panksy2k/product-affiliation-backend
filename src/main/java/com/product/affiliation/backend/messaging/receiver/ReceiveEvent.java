@@ -1,10 +1,10 @@
 package com.product.affiliation.backend.messaging.receiver;
 
-import com.product.affiliation.backend.messaging.event.ProductPayload;
+import com.product.affiliation.backend.messaging.event.ProductEventPayload;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 public class ReceiveEvent {
-  private final ProductPayload payload;
+  private final ProductEventPayload payload;
 
   private final Throwable error;
 
@@ -12,14 +12,14 @@ public class ReceiveEvent {
 
   private final String encodedValue;
 
-  public ReceiveEvent(ProductPayload payload, Throwable error, ConsumerRecord<String, ?> record, String encodedValue) {
+  public ReceiveEvent(ProductEventPayload payload, Throwable error, ConsumerRecord<String, ?> record, String encodedValue) {
     this.record = record;
     this.payload = payload;
     this.error = error;
     this.encodedValue = encodedValue;
   }
 
-  public ProductPayload getPayload() {
+  public ProductEventPayload getPayload() {
     return payload;
   }
 

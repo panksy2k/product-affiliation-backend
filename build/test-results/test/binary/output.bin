@@ -1,127 +1,0 @@
-°22:21:43/1     INFO  [Test worker]: Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
-r22:21:43/144   INFO  [Test worker]: Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
-H22:21:43/145   INFO  [Test worker]: Docker host IP address is localhost
-:22:21:43/153   INFO  [Test worker]: Connected to docker: 
-  Server Version: master
-  API Version: 1.44
-#  Operating System: Docker Desktop
-  Total Memory: 7950 MB
-…22:21:43/154   INFO  [Test worker]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
-t22:21:48/4750  INFO  [Test worker]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
-;22:21:48/4750  INFO  [Test worker]: Checking the system...
-Z22:21:48/4751  INFO  [Test worker]: ‚úîÔ∏é Docker server version should be at least 1.6.0
-h22:21:48/4791  INFO  [Test worker]: ‚úîÔ∏é Docker environment should have more than 2GB free disk space
-V22:21:48/4839  TRACE [Test worker]: postgres:11-alpine is already in image name cache
-K22:21:48/4839  DEBUG [Test worker]: Starting container: postgres:11-alpine
-`22:21:48/4839  DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-K22:21:48/4839  DEBUG [Test worker]: Starting container: postgres:11-alpine
-U22:21:48/4839  INFO  [Test worker]: Creating container for image: postgres:11-alpine
-Å22:21:48/4865  INFO  [Test worker]: Starting container with ID: 7333fae9e8aa6be368494c907240aea1160a0cd8281c5c626c628ee97d2bef90
-è22:21:48/4975  INFO  [Test worker]: Container postgres:11-alpine is starting: 7333fae9e8aa6be368494c907240aea1160a0cd8281c5c626c628ee97d2bef90
-X22:21:49/5976  INFO  [Test worker]: Container postgres:11-alpine started in PT1.184213S
-©22:21:49/6049  WARN  [Test worker]: Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
-V22:21:50/6328  TRACE [Test worker]: postgres:11-alpine is already in image name cache
-K22:21:50/6328  DEBUG [Test worker]: Starting container: postgres:11-alpine
-`22:21:50/6328  DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-K22:21:50/6329  DEBUG [Test worker]: Starting container: postgres:11-alpine
-U22:21:50/6329  INFO  [Test worker]: Creating container for image: postgres:11-alpine
-Å22:21:50/6351  INFO  [Test worker]: Starting container with ID: 5dd92194e6f414e530dc9dd372d0fd97568204ea29d4e876c51d2ae7617a0e5d
-è22:21:50/6454  INFO  [Test worker]: Container postgres:11-alpine is starting: 5dd92194e6f414e530dc9dd372d0fd97568204ea29d4e876c51d2ae7617a0e5d
-X22:21:51/7347  INFO  [Test worker]: Container postgres:11-alpine started in PT1.018867S
-V22:21:51/7520  TRACE [Test worker]: postgres:11-alpine is already in image name cache
-K22:21:51/7520  DEBUG [Test worker]: Starting container: postgres:11-alpine
-`22:21:51/7520  DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-K22:21:51/7520  DEBUG [Test worker]: Starting container: postgres:11-alpine
-U22:21:51/7520  INFO  [Test worker]: Creating container for image: postgres:11-alpine
-Å22:21:51/7542  INFO  [Test worker]: Starting container with ID: c58cbbfc63e8192753e94a93078b1ba68a9e3904242551e6dfb14bf8ce7215ee
-è22:21:51/7637  INFO  [Test worker]: Container postgres:11-alpine is starting: c58cbbfc63e8192753e94a93078b1ba68a9e3904242551e6dfb14bf8ce7215ee
-X22:21:52/8527  INFO  [Test worker]: Container postgres:11-alpine started in PT1.007093S
- Product{id=1, name='Dell SE2222H 21.5 Inch Full HD (1920x1080) Monitor', affiliateURL=https://www.amazon.co.uk/dp/B095749V5V/ref=sspa_dk_detail_5?pd_rd_i=B095749V5V&pd_rd_w=912fo&content-id=amzn1.sym.84ea1bf1-65a8-4363-b8f5-f0df58cbb686&pf_rd_p=84ea1bf1-65a8-4363-b8f5-f0df58cbb686&pf_rd_r=MBM0N7W2E8CDFQXHB343&pd_rd_wg=aV22e&pd_rd_r=1c384c09-a39a-4922-b127-6793c694e633&s=computers&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWw&th=1, productCondition='NEW', price=69.98999786376953, warrantyValue='3 Years', screenSize='27 Inch', refreshRate='60Hz', maxDisplayResolution='1920 x 1080', displayType='HD', dimension='4.9D x 50.4W x 29.5H centimetres', specialFeatures=[Anti Glare Screen, Flicker Free], brand='Dell', color='Black', amazonChoice=true, connectivityTech=[HDMI], purveyor='Amazon', brandSeries='SE2222H', hdmiPortsQty=2, aspectRatio='16:9'}
-V22:21:52/8705  TRACE [Test worker]: postgres:11-alpine is already in image name cache
-K22:21:52/8705  DEBUG [Test worker]: Starting container: postgres:11-alpine
-`22:21:52/8705  DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-K22:21:52/8706  DEBUG [Test worker]: Starting container: postgres:11-alpine
-U22:21:52/8706  INFO  [Test worker]: Creating container for image: postgres:11-alpine
-Å22:21:52/8726  INFO  [Test worker]: Starting container with ID: 19ce5ffeb6ddd54dabf1d77733dad962b06bf4fa4daa05819e9ef361bfde1ec3
-è22:21:52/8840  INFO  [Test worker]: Container postgres:11-alpine is starting: 19ce5ffeb6ddd54dabf1d77733dad962b06bf4fa4daa05819e9ef361bfde1ec3
-X22:21:53/9730  INFO  [Test worker]: Container postgres:11-alpine started in PT1.024733S
-V22:21:53/9900  TRACE [Test worker]: postgres:11-alpine is already in image name cache
-K22:21:53/9900  DEBUG [Test worker]: Starting container: postgres:11-alpine
-`22:21:53/9900  DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-K22:21:53/9900  DEBUG [Test worker]: Starting container: postgres:11-alpine
-U22:21:53/9900  INFO  [Test worker]: Creating container for image: postgres:11-alpine
-Å22:21:53/9924  INFO  [Test worker]: Starting container with ID: 2688b8f372461e84181ca673e8ff0d634ca224a630256f60bfc2bcac4f0bcf71
-è22:21:53/10023 INFO  [Test worker]: Container postgres:11-alpine is starting: 2688b8f372461e84181ca673e8ff0d634ca224a630256f60bfc2bcac4f0bcf71
-X22:21:54/10938 INFO  [Test worker]: Container postgres:11-alpine started in PT1.037931S
-V22:21:54/11098 TRACE [Test worker]: postgres:11-alpine is already in image name cache
-K22:21:54/11098 DEBUG [Test worker]: Starting container: postgres:11-alpine
-`22:21:54/11098 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-K22:21:54/11098 DEBUG [Test worker]: Starting container: postgres:11-alpine
-U22:21:54/11098 INFO  [Test worker]: Creating container for image: postgres:11-alpine
-Å22:21:54/11122 INFO  [Test worker]: Starting container with ID: ba4fe5896a6219fac44ca12f79d8865029fb103c0189afb1fa51d435ffd27454
-è22:21:54/11234 INFO  [Test worker]: Container postgres:11-alpine is starting: ba4fe5896a6219fac44ca12f79d8865029fb103c0189afb1fa51d435ffd27454
-X22:21:55/12117 INFO  [Test worker]: Container postgres:11-alpine started in PT1.019143S
-V22:21:56/12290 TRACE [Test worker]: postgres:11-alpine is already in image name cache
-K22:21:56/12290 DEBUG [Test worker]: Starting container: postgres:11-alpine
-`22:21:56/12290 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-K22:21:56/12290 DEBUG [Test worker]: Starting container: postgres:11-alpine
-U22:21:56/12290 INFO  [Test worker]: Creating container for image: postgres:11-alpine
-Å22:21:56/12311 INFO  [Test worker]: Starting container with ID: 1a5d3923c344faf6c10053c0f0620a7b6f81149c34dbfdbdf9b4498c7c08fcbc
-è22:21:56/12407 INFO  [Test worker]: Container postgres:11-alpine is starting: 1a5d3923c344faf6c10053c0f0620a7b6f81149c34dbfdbdf9b4498c7c08fcbc
-W22:21:57/13309 INFO  [Test worker]: Container postgres:11-alpine started in PT1.01992S
-	V22:21:57/13477 TRACE [Test worker]: postgres:11-alpine is already in image name cache
-	K22:21:57/13477 DEBUG [Test worker]: Starting container: postgres:11-alpine
-	`22:21:57/13477 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-	K22:21:57/13477 DEBUG [Test worker]: Starting container: postgres:11-alpine
-	U22:21:57/13477 INFO  [Test worker]: Creating container for image: postgres:11-alpine
-	Å22:21:57/13501 INFO  [Test worker]: Starting container with ID: 9ed399d830c834e7f75811841dfc4e2bd5b04464c0e43200906a0fefbee55431
-	è22:21:57/13607 INFO  [Test worker]: Container postgres:11-alpine is starting: 9ed399d830c834e7f75811841dfc4e2bd5b04464c0e43200906a0fefbee55431
-	X22:21:58/14522 INFO  [Test worker]: Container postgres:11-alpine started in PT1.044601S
-
-V22:21:58/14692 TRACE [Test worker]: postgres:11-alpine is already in image name cache
-
-K22:21:58/14692 DEBUG [Test worker]: Starting container: postgres:11-alpine
-
-`22:21:58/14692 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-
-K22:21:58/14692 DEBUG [Test worker]: Starting container: postgres:11-alpine
-
-U22:21:58/14692 INFO  [Test worker]: Creating container for image: postgres:11-alpine
-
-Å22:21:58/14714 INFO  [Test worker]: Starting container with ID: 4f7606bd84a11ee6f576b9ec56e33396b2bdca93bb9a3a5780ba4fe52a6482df
-
-è22:21:58/14810 INFO  [Test worker]: Container postgres:11-alpine is starting: 4f7606bd84a11ee6f576b9ec56e33396b2bdca93bb9a3a5780ba4fe52a6482df
-
-X22:21:59/15725 INFO  [Test worker]: Container postgres:11-alpine started in PT1.032858S
-V22:21:59/15905 TRACE [Test worker]: postgres:11-alpine is already in image name cache
-K22:21:59/15905 DEBUG [Test worker]: Starting container: postgres:11-alpine
-`22:21:59/15905 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-K22:21:59/15905 DEBUG [Test worker]: Starting container: postgres:11-alpine
-U22:21:59/15905 INFO  [Test worker]: Creating container for image: postgres:11-alpine
-Å22:21:59/15929 INFO  [Test worker]: Starting container with ID: 8b38f7188f553b44bcb108e45266efced1242bd926e8bc55ae16c916d1f0afbd
-è22:21:59/16028 INFO  [Test worker]: Container postgres:11-alpine is starting: 8b38f7188f553b44bcb108e45266efced1242bd926e8bc55ae16c916d1f0afbd
-X22:22:00/16958 INFO  [Test worker]: Container postgres:11-alpine started in PT1.052592S
-V22:22:00/17121 TRACE [Test worker]: postgres:11-alpine is already in image name cache
-K22:22:00/17121 DEBUG [Test worker]: Starting container: postgres:11-alpine
-`22:22:00/17121 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-K22:22:00/17121 DEBUG [Test worker]: Starting container: postgres:11-alpine
-U22:22:00/17121 INFO  [Test worker]: Creating container for image: postgres:11-alpine
-Å22:22:00/17144 INFO  [Test worker]: Starting container with ID: 4512d349231a3c53cc7147d28e127e9e56673403f12e8cc804f69acbf82dbbb0
-è22:22:00/17243 INFO  [Test worker]: Container postgres:11-alpine is starting: 4512d349231a3c53cc7147d28e127e9e56673403f12e8cc804f69acbf82dbbb0
-V22:22:01/18151 INFO  [Test worker]: Container postgres:11-alpine started in PT1.0305S
-V22:22:02/18309 TRACE [Test worker]: postgres:11-alpine is already in image name cache
-K22:22:02/18309 DEBUG [Test worker]: Starting container: postgres:11-alpine
-`22:22:02/18309 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-K22:22:02/18309 DEBUG [Test worker]: Starting container: postgres:11-alpine
-U22:22:02/18310 INFO  [Test worker]: Creating container for image: postgres:11-alpine
-Å22:22:02/18332 INFO  [Test worker]: Starting container with ID: ffbd8a49d41ec02bcef498cd1c3e5e6f12250c71a435c45ae8fc00e44d26720e
-è22:22:02/18431 INFO  [Test worker]: Container postgres:11-alpine is starting: ffbd8a49d41ec02bcef498cd1c3e5e6f12250c71a435c45ae8fc00e44d26720e
-X22:22:03/19340 INFO  [Test worker]: Container postgres:11-alpine started in PT1.030915S
-V22:22:03/19492 TRACE [Test worker]: postgres:11-alpine is already in image name cache
-K22:22:03/19492 DEBUG [Test worker]: Starting container: postgres:11-alpine
-`22:22:03/19492 DEBUG [Test worker]: Trying to start container: postgres:11-alpine (attempt 1/1)
-K22:22:03/19492 DEBUG [Test worker]: Starting container: postgres:11-alpine
-U22:22:03/19492 INFO  [Test worker]: Creating container for image: postgres:11-alpine
-Å22:22:03/19512 INFO  [Test worker]: Starting container with ID: 3902a0bca9c40be2c740a240fc6be1b8f42048c63c5df0e3183c225c4a8ca1b5
-è22:22:03/19606 INFO  [Test worker]: Container postgres:11-alpine is starting: 3902a0bca9c40be2c740a240fc6be1b8f42048c63c5df0e3183c225c4a8ca1b5
-X22:22:04/20490 INFO  [Test worker]: Container postgres:11-alpine started in PT0.998086S

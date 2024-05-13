@@ -7,6 +7,7 @@ import io.vertx.core.Vertx;
 import io.vertx.kafka.client.consumer.KafkaConsumer;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -37,14 +38,10 @@ public class ProductPipelinedReceiver implements EventReceiver {
 
     pollTimeout = pollTime;
 
-    Map<String, String> consumerFinalMergedConfig = Map.of(
-        ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092",
-        ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName(),
-        ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName(),
-        ConsumerConfig.GROUP_ID_CONFIG, "product-group",
-        ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest",
-        ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
-
+    Map<String, String> consumerFinalMergedConfig = new HashMap<>();
+    consumerFinalMergedConfig.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+    consumerFinalMergedConfig.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ProductPayloadDeserializer.class.getName());
+    consumerFinalMergedConfig.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
     consumerFinalMergedConfig.putAll(consumerGenericConfig);
 
     kconsumer = KafkaConsumer.create(vertx, consumerFinalMergedConfig);

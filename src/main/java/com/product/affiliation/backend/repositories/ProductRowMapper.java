@@ -1,49 +1,60 @@
 package com.product.affiliation.backend.repositories;
 
+import static com.product.affiliation.backend.util.IOUtil.isValidUrl;
 import com.product.affiliation.backend.errors.ValidationException;
-import com.product.affiliation.backend.messaging.event.GetProductPayload;
-import io.vertx.core.json.JsonArray;
+import com.product.affiliation.backend.messaging.event.BrandEnum;
+import com.product.affiliation.backend.messaging.event.ColorEnum;
+import com.product.affiliation.backend.messaging.event.ConditionEnum;
+import com.product.affiliation.backend.messaging.event.ConnectivityTechEnum;
+import com.product.affiliation.backend.messaging.event.DisplayTypeEnum;
+import com.product.affiliation.backend.messaging.event.ProductResponseEventPayload;
+import com.product.affiliation.backend.messaging.event.SpecialFeatureEnum;
 import io.vertx.sqlclient.Row;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.Function;
-import org.apache.commons.lang3.StringUtils;
+import java.util.stream.Collectors;
 
-public class ProductRowMapper implements Function<Row, GetProductPayload> {
+public class ProductRowMapper implements Function<Row, ProductResponseEventPayload> {
 
   @Override
-  public GetProductPayload apply(Row row) throws ValidationException {
-    GetProductPayload temp = new GetProductPayload(row.getLong("id"));
+  public ProductResponseEventPayload apply(Row row) throws ValidationException {
+    ProductResponseEventPayload temp = new ProductResponseEventPayload(row.getLong("id"));
+
     temp.setName(row.getString("name"));
     temp.setPrice(row.getDouble("price"));
 
     String affiliateURL = row.getString("affiliateurl");
-    if(StringUtils.isBlank(affiliateURL)) {
-      throw new ValidationException(new JsonArray().set(0, "Affiliate URL not found"));
-    } else {
-      try {
-        temp.setAffiliateURL(new URL(affiliateURL));
-      } catch(MalformedURLException e) {
-        throw new ValidationException(new JsonArray().set(0, "Affiliate URL is malformed"));
-      }
+    if(isValidUrl(affiliateURL)) {
+      temp.setAffiliateURL(affiliateURL);
     }
 
-    temp.setProductCondition(row.getString("productcondition"));
+    temp.setProductCondition(ConditionEnum.forName(row.getString("productcondition")));
     temp.setScreenSize(row.getString("screensize"));
     temp.setMaxDisplayResolution(row.getString("maxdisplayresolution"));
-    temp.setBrand(row.getString("brand"));
+    temp.setBrand(BrandEnum.forName(row.getString("brand")));
     temp.setBrandSeries(row.getString("brandseries"));
     temp.setHdmiPortsQty(row.getShort("hdmiportsqty"));
     temp.setRefreshRate(row.getString("refreshrate"));
-    temp.setConnectivityTech(row.getArrayOfStrings("connectivitytech"));
+
+    String[] connectivityTechSupport = row.getArrayOfStrings("connectivitytech");
+    if(connectivityTechSupport != null && connectivityTechSupport.length > 0) {
+      temp.setConnectivityTech(Arrays.stream(connectivityTechSupport).map(ConnectivityTechEnum::forName).filter(
+          Objects::nonNull).collect(Collectors.toSet()));
+    }
+
     temp.setAspectRatio(row.getString("aspectratio"));
-    temp.setDisplayType(row.getString("displaytype"));
+    temp.setDisplayType(DisplayTypeEnum.forName(row.getString("displaytype")));
     temp.setDimension(row.getString("dimension"));
     temp.setWarrantyValue(row.getString("warranty"));
-    temp.setSpecialFeatures(row.getArrayOfStrings("specialfeatures"));
-    temp.setColor(row.getString("color"));
+
+    String[] specialFeatures = row.getArrayOfStrings("specialfeatures");
+    if(specialFeatures != null && specialFeatures.length > 0) {
+      temp.setSpecialFeatures(Arrays.stream(specialFeatures).map(SpecialFeatureEnum::forName).collect(Collectors.toSet()));
+    }
+
+    temp.setColor(ColorEnum.forName(row.getString("color")));
     temp.setAmazonChoice(row.getBoolean("amazonchoice"));
-    temp.setPurveyor(row.getString("purveyor"));
 
     return temp;
   }

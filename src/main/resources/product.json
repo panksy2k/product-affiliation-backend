@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "type":  "GET_PRODUCT",
+  "amazonChoiceYesOrNo": true,
+  "displayType": "LED",
+  "screenSize": ["35","32"],
+  "color": ["White","Black"],
+  "refreshRate": "75",
+  "displayResolution": "2950 x 1440",
+  "connectivityTech": ["USBC","HDMI"],
+  "brand": ["BENQ","Samsung"]
+}

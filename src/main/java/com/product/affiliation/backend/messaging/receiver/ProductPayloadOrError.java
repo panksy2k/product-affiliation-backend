@@ -1,21 +1,21 @@
 package com.product.affiliation.backend.messaging.receiver;
 
-import com.product.affiliation.backend.messaging.event.ProductPayload;
+import com.product.affiliation.backend.messaging.event.ProductEventPayload;
 
 public final class ProductPayloadOrError {
-  private final ProductPayload payload;
+  private final ProductEventPayload payload;
 
   private final Throwable error;
 
   private String encodedValue;
 
-  public ProductPayloadOrError(ProductPayload payload, Throwable error, String encodedValue) {
+  public ProductPayloadOrError(ProductEventPayload payload, Throwable error, String encodedValue) {
     this.payload = payload;
     this.error = error;
     this.encodedValue = encodedValue;
   }
 
-  public ProductPayload getPayload() {
+  public ProductEventPayload getPayload() {
     return payload;
   }
 

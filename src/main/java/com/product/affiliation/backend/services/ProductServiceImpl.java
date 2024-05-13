@@ -1,16 +1,13 @@
 package com.product.affiliation.backend.services;
 
-import com.product.affiliation.backend.messaging.event.GetProductPayload;
+import com.product.affiliation.backend.messaging.event.GetProductsEventPayload;
+import com.product.affiliation.backend.messaging.event.ProductResponseEventPayload;
 import com.product.affiliation.backend.messaging.receiver.EventReceiver;
 import com.product.affiliation.backend.messaging.receiver.ReceiveEvent;
 import com.product.affiliation.backend.repositories.ProductRepository;
-import com.product.affiliation.backend.util.QueryHelper;
 import io.vertx.core.Future;
-import io.vertx.core.json.JsonObject;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.logging.Logger;
 
 public class ProductServiceImpl implements ProductService {
@@ -20,26 +17,24 @@ public class ProductServiceImpl implements ProductService {
 
   public ProductServiceImpl(ProductRepository productRepository, EventReceiver eventReceiver) {
     this.productRepository = productRepository;
-    this.productEventReceiver = eventReceiver;
 
+    this.productEventReceiver = eventReceiver;
     this.productEventReceiver.addListener(this::onEventCapture);
   }
 
   @Override
-  public Future<GetProductPayload> createProduct(GetProductPayload newProduct) {
+  public Future<ProductResponseEventPayload> createProduct(ProductResponseEventPayload newProduct) {
     return productRepository.saveProduct(newProduct);
   }
 
   @Override
-  public Future<List<GetProductPayload>> findProducts(JsonObject filterCriteria) {
-    Set<String> allJsonElements = filterCriteria.fieldNames();
+  public Future<List<ProductResponseEventPayload>> findProducts(GetProductsEventPayload filterCriteria) {
+    if(filterCriteria == null) {
+      return Future.failedFuture("Empty payload criteria");
 
-    List<String> queryWhereClause = new ArrayList<>();
-    for (String columnName : allJsonElements) {
-      queryWhereClause.add(QueryHelper.createExpression(columnName, filterCriteria.getJsonObject(columnName)));
     }
 
-    return this.productRepository.findProducts(queryWhereClause);
+    return this.productRepository.findProducts(filterCriteria);
   }
 
   @Override
@@ -48,12 +43,12 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public Future<GetProductPayload> updateProduct(GetProductPayload productExisting) {
+  public Future<ProductResponseEventPayload> updateProduct(ProductResponseEventPayload productExisting) {
     return null;
   }
 
   @Override
-  public Future<Optional<GetProductPayload>> findProduct(long productId) {
+  public Future<Optional<ProductResponseEventPayload>> findProduct(long productId) {
     return productRepository.findProduct(productId);
   }
 
@@ -63,8 +58,10 @@ public class ProductServiceImpl implements ProductService {
   }
 
   private void onEventCapture(ReceiveEvent event) {
-    //TODO - call the service & pass the query (event)
-
+    if(event.isError()) {
+      System.err.format("Error whilst receiving data for product %s -- %s%n", event.getRecord(), event.getError());
+    } else {
+      System.err.format("Received data for product %s%n", event.getPayload());
+    }
   }
-
 }

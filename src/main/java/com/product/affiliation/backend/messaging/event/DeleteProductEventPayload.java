@@ -2,10 +2,10 @@ package com.product.affiliation.backend.messaging.event;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class DeleteProductPayload extends ProductPayload {
+public class DeleteProductEventPayload extends ProductEventPayload {
   static final String TYPE = "DELETE_PRODUCT";
 
-  public DeleteProductPayload(@JsonProperty("id") Long id) {
+  public DeleteProductEventPayload(@JsonProperty("id") Long id) {
     super(id);
   }
 
