@@ -2,6 +2,7 @@ package com.product.affiliation.backend.messaging.event;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 
@@ -167,8 +168,8 @@ public class GetProductsEventPayload extends ProductEventPayload {
 
     GetProductsEventPayloadBuilder() {}
 
-    public GetProductsEventPayloadBuilder withProductCondition(ConditionEnum... productCondition) {
-      pc = Set.of(productCondition);
+    public GetProductsEventPayloadBuilder withProductCondition(Set<ConditionEnum> productCondition) {
+      this.pc = productCondition;
       return this;
     }
 
@@ -192,13 +193,13 @@ public class GetProductsEventPayload extends ProductEventPayload {
       return this;
     }
 
-    public GetProductsEventPayloadBuilder withBrand(BrandEnum... brands) {
-      brand = Set.of(brands);
+    public GetProductsEventPayloadBuilder withBrand(Set<BrandEnum> brands) {
+      this.brand = brands;
       return this;
     }
 
-    public GetProductsEventPayloadBuilder withColors(ColorEnum ... colors) {
-      color =  Set.of(colors);
+    public GetProductsEventPayloadBuilder withColors(Set<ColorEnum> colors) {
+      this.color =  colors;
       return this;
     }
 
@@ -207,8 +208,8 @@ public class GetProductsEventPayload extends ProductEventPayload {
       return this;
     }
 
-    public GetProductsEventPayloadBuilder withConnectivityTech(ConnectivityTechEnum ... connectivity) {
-      connectivityTech = Set.of(connectivity);
+    public GetProductsEventPayloadBuilder withConnectivityTech(Set<ConnectivityTechEnum> connectivity) {
+      connectivityTech = connectivity;
       return this;
     }
 

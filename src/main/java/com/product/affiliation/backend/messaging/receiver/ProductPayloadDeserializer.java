@@ -9,7 +9,11 @@ import com.product.affiliation.backend.messaging.event.ConnectivityTechEnum;
 import com.product.affiliation.backend.messaging.event.DisplayTypeEnum;
 import com.product.affiliation.backend.messaging.event.GetProductsEventPayload;
 import com.product.affiliation.backend.util.Util;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import org.apache.commons.lang3.StringUtils;
@@ -39,29 +43,29 @@ public class ProductPayloadDeserializer implements Deserializer<ProductPayloadOr
     try {
       JsonNode rootNode = objectMapper.readTree(data);
 
-      setArray(SCREEN_SIZE, l -> l.toArray(String[]::new), sa -> productsEventPayloadBuilder.withScreenSize(sa), rootNode);
-      setTextValue(REFRESH_RATE, s -> productsEventPayloadBuilder.withRefreshRate(s), rootNode);
-      setTextValue(DISPLAY_RESOLUTION, s -> productsEventPayloadBuilder.withMaxDisplayResolution(s), rootNode);
+      setArray(SCREEN_SIZE, productsEventPayloadBuilder::withScreenSize, rootNode);
+      setTextValue(REFRESH_RATE, productsEventPayloadBuilder::withRefreshRate, rootNode);
+      setTextValue(DISPLAY_RESOLUTION, productsEventPayloadBuilder::withMaxDisplayResolution, rootNode);
 
       productsEventPayloadBuilder.withAmazonChoice(rootNode.findValue(AMAZON_CHOICE).asBoolean());
 
       setEnum(DISPLAY_TYPE,
         DisplayTypeEnum::forName,
-        ea -> productsEventPayloadBuilder.withMaxDisplayType(ea),
+        productsEventPayloadBuilder::withMaxDisplayType,
         rootNode);
 
-      setEnumArray(COLOR, ColorEnum::forName, ea -> productsEventPayloadBuilder.withColors(ea), rootNode);
+      setEnumArray(COLOR, ColorEnum::forName, productsEventPayloadBuilder::withColors, rootNode);
       setEnumArray(PRODUCT_CONDITION,
         ConditionEnum::forName,
-        ea -> productsEventPayloadBuilder.withProductCondition(ea),
+        productsEventPayloadBuilder::withProductCondition,
         rootNode);
       setEnumArray(BRAND,
         BrandEnum::forName,
-        ea -> productsEventPayloadBuilder.withBrand(ea),
+        productsEventPayloadBuilder::withBrand,
         rootNode);
       setEnumArray(CONNECTIVITY_TECH,
         ConnectivityTechEnum::forName,
-        ea -> productsEventPayloadBuilder.withConnectivityTech(ea),
+        productsEventPayloadBuilder::withConnectivityTech,
         rootNode);
 
       setDouble(PRICE_FROM, productsEventPayloadBuilder :: withPriceFrom, rootNode);
@@ -75,21 +79,31 @@ public class ProductPayloadDeserializer implements Deserializer<ProductPayloadOr
   }
 
   private void setDouble(String fieldName, Consumer<Double> priceStore, JsonNode rootNode) {
-    Double p = rootNode.findValue(fieldName).asDouble();
-    if(p != null && !p.isNaN()) {
-      priceStore.accept(p);
+
+    if(rootNode.findValue(fieldName) != null && rootNode.findValue(fieldName).isDouble()) {
+      Double p = rootNode.findValue(fieldName).asDouble();
+      if(p != null && !p.isNaN()) {
+        priceStore.accept(p);
+      }
     }
   }
 
   private <E extends Enum<E>> void setEnumArray(String fieldName,
                                                 Function<String, E> strToEnum,
-                                                Consumer<E[]> valueStore,
+                                                Consumer<Set<E>> valueStore,
                                                 JsonNode rootNode) {
 
-    List<String> fieldValueList = rootNode.findValuesAsText(fieldName);
-    if(!Util.isEmpty(fieldValueList)) {
-      E array[] = (E[]) fieldValueList.stream().map(strToEnum).toArray();
-      valueStore.accept(array);
+    JsonNode enumArrayNode = rootNode.findValue(fieldName);
+
+    if(!Objects.isNull(enumArrayNode) && enumArrayNode.isArray() && enumArrayNode.size() > 0) {
+      Set<E> collectionOfEnum = new LinkedHashSet<>();
+
+      for(int i = 0; i < enumArrayNode.size(); i++) {
+        String enumStrValue = enumArrayNode.get(i).asText();
+        collectionOfEnum.add(strToEnum.apply(enumStrValue));
+      }
+
+      valueStore.accept(collectionOfEnum);
     }
   }
 
@@ -105,10 +119,17 @@ public class ProductPayloadDeserializer implements Deserializer<ProductPayloadOr
     }
   }
 
-  private void setArray(String fieldName, Function<List<String>, String[]> func, Consumer<String[]> valueStore, JsonNode rootNode) {
-    List<String> valueList = rootNode.findValuesAsText(fieldName);
-    if(!Util.isEmpty(valueList)) {
-        valueStore.accept(func.apply(valueList));
+  private void setArray(String fieldName, Consumer<String[]> valueStore, JsonNode rootNode) {
+    JsonNode arrayNode = rootNode.findValue(fieldName);
+
+    if(!Objects.isNull(arrayNode) && arrayNode.isArray() && arrayNode.size() > 0) {
+      String[] arrValue = new String[arrayNode.size()];
+
+      for(int i = 0; i < arrayNode.size(); i++) {
+        arrValue[i] = arrayNode.get(i).asText();
+      }
+
+      valueStore.accept(arrValue);
     }
   }
 

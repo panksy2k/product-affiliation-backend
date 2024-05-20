@@ -20,6 +20,7 @@ import io.vertx.pgclient.PgPool;
 import io.vertx.sqlclient.SqlClient;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
@@ -81,11 +82,11 @@ public class ProductRepositoryImplTest {
 
   private static List<GetProductsEventPayload> getFetchCriteria() {
     return Arrays.asList(
-      GetProductsEventPayload.builder().withBrand(BrandEnum.DELL).build(),
-      GetProductsEventPayload.builder().withProductCondition(ConditionEnum.NEW).build(),
+      GetProductsEventPayload.builder().withBrand(Set.of(BrandEnum.DELL)).build(),
+      GetProductsEventPayload.builder().withProductCondition(Set.of(ConditionEnum.NEW)).build(),
       GetProductsEventPayload.builder().withScreenSize("27 Inch").build(),
       GetProductsEventPayload.builder().withMaxDisplayResolution("1920 x 1080").build(),
-      GetProductsEventPayload.builder().withColors(ColorEnum.BLACK).build(),
+      GetProductsEventPayload.builder().withColors(Set.of(ColorEnum.BLACK)).build(),
       GetProductsEventPayload.builder().withMaxDisplayType(DisplayTypeEnum.HD).build(),
       GetProductsEventPayload.builder().withAmazonChoice(true).build());
   }
